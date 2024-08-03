@@ -15,7 +15,7 @@ export default class AutoGPTServerAPI {
   private messageHandlers: { [key: string]: (data: any) => void } = {};
 
   constructor(
-    baseUrl: string = process.env.AGPT_SERVER_URL || "http://localhost:8000/api"
+    baseUrl: string = process.env.AGPT_SERVER_URL || "https://musical-garbanzo-3000.app.github.dev/api"
   ) {
     this.baseUrl = baseUrl;
     this.wsUrl = `ws://${new URL(this.baseUrl).host}/ws`;
