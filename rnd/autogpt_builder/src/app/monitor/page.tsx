@@ -48,7 +48,7 @@ const Monitor = () => {
 
   const api = new AutoGPTServerAPI();
 
-  useEffect(() => fetchFlowsAndRuns(), []);
+  useEffect(() => fetchFlowsAndRuns(), [api, fetchFlowsAndRuns, flows, refreshFlowRuns]);
   useEffect(() => {
     const intervalId = setInterval(() => flows.map(f => refreshFlowRuns(f.id)), 5000);
     return () => clearInterval(intervalId);
@@ -685,7 +685,7 @@ const ScrollableLegend: React.FC<DefaultLegendContentProps & { className?: strin
       )}
       style={{ scrollbarWidth: "none" }}
     >
-      {payload.map((entry, index) => {
+      {payload?.map((entry, index) => {
         if (entry.type == "none") return;
         return (
           <span key={`item-${index}`} className="inline-flex items-center">
